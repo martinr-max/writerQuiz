@@ -19,11 +19,11 @@ export default function QuizForm() {
 		quizData: createSelectionList(writers),
     	};
     
-	const initialCount = Number(window.localStorage.getItem('progress') || 0);
+	const initialProgress = Number(window.localStorage.getItem('progress') || 0);
 	const initialWrongAnswers = Number(window.localStorage.getItem('wrongAnswers') || 0);
 	const initialRightAnswers = Number(window.localStorage.getItem('rightAnswers') || 0);
 
-	let [progress, setProgress] = useState(initialCount);
+	let [progress, setProgress] = useState(initialProgress);
 	let [rightAnswers, setRightAnswers] = useState(initialRightAnswers);
 	let [wrongAnswers, setWrongAnswers] = useState(initialWrongAnswers);
 	const [openResultModal, setOpenResultModal] = useState(false);
