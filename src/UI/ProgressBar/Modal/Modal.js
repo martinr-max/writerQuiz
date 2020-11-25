@@ -13,10 +13,10 @@ const ResultModal = ({
 	rightAnswers
     }) => {
 
-	const results = `You had  ${ rightAnswers } right  and  ${ wrongAnswers } wrong answers`;
+    const results = `You had  ${ rightAnswers } right  and  ${ wrongAnswers } wrong answers`;
 
     return (
-		<div>
+	<div>
         <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
