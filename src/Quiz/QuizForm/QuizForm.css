@@ -25,12 +25,11 @@
   margin-bottom: 20px;
 }
 
-
-
 .quiz_card_content {
   display: flex;
   flex-direction: column;
 }
+
 .quiz_section {
   display: flex;
   flex-direction: column;
