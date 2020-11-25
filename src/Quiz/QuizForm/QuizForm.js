@@ -14,68 +14,68 @@ import ResultModal from '../../UI/ProgressBar/Modal/Modal';
 
 export default function QuizForm() {
 
-	const initialState = {
-		writers,
-		quizData: createSelectionList(writers),
-    	};
-    
-	const initialProgress = Number(window.localStorage.getItem('progress') || 0);
-	const initialWrongAnswers = Number(window.localStorage.getItem('wrongAnswers') || 0);
-	const initialRightAnswers = Number(window.localStorage.getItem('rightAnswers') || 0);
+  const initialState = {
+    writers,
+    quizData: createSelectionList(writers),
+  };
 
-	let [progress, setProgress] = useState(initialProgress);
-	let [rightAnswers, setRightAnswers] = useState(initialRightAnswers);
-	let [wrongAnswers, setWrongAnswers] = useState(initialWrongAnswers);
-	const [openResultModal, setOpenResultModal] = useState(false);
+  const initialProgress = Number(window.localStorage.getItem('progress') || 0);
+  const initialWrongAnswers = Number(window.localStorage.getItem('wrongAnswers') || 0);
+  const initialRightAnswers = Number(window.localStorage.getItem('rightAnswers') || 0);
 
-	useEffect(() => {
-		localStorage.setItem("progress", progress);
-		localStorage.setItem('rightAnswers', rightAnswers);
-		localStorage.setItem('wrongAnswers', wrongAnswers);
-	}, [progress, rightAnswers, wrongAnswers]);
+  let [progress, setProgress] = useState(initialProgress);
+  let [rightAnswers, setRightAnswers] = useState(initialRightAnswers);
+  let [wrongAnswers, setWrongAnswers] = useState(initialWrongAnswers);
+  const [openResultModal, setOpenResultModal] = useState(false);
 
-	const history = useHistory();
-	const cardBackground = useRef(0);
+  useEffect(() => {
+    localStorage.setItem("progress", progress);
+    localStorage.setItem('rightAnswers', rightAnswers);
+    localStorage.setItem('wrongAnswers', wrongAnswers);
+  }, [progress, rightAnswers, wrongAnswers]);
 
-	const refresh = async () => {
-		setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
-		history.push({
-			pathname: "/empty"
-		});
-		history.goBack();
-	};
+  const history = useHistory();
+  const cardBackground = useRef(0);
 
-	const selectBookHandler = (title) => {
-		let isCorrect = initialState.quizData.checkAnswer(title);
-		if (isCorrect) {
-			cardBackground.current.style.backgroundColor = "green";
-			setTimeout(() => {
-				setRightAnswers(prevAnswers => prevAnswers + 1);
-				refresh();
-			}, 1000)
-		} else {
-			cardBackground.current.style.backgroundColor = "#FF7F50";
-			setTimeout(() => {
-				setWrongAnswers(prevAnswers => prevAnswers + 1);
-				refresh();
-			}, 1000);
-		}
-	};
+  const refresh = async () => {
+    setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
+    history.push({
+      pathname: "/empty"
+    });
+    history.goBack();
+  };
 
-	const handleOpenResultModal = () => {
-		setOpenResultModal(true);
-	};
+  const selectBookHandler = (title) => {
+    let isCorrect = initialState.quizData.checkAnswer(title);
+    if (isCorrect) {
+      cardBackground.current.style.backgroundColor = "green";
+      setTimeout(() => {
+        setRightAnswers(prevAnswers => prevAnswers + 1);
+        refresh();
+      }, 1000)
+    } else {
+      cardBackground.current.style.backgroundColor = "#FF7F50";
+      setTimeout(() => {
+        setWrongAnswers(prevAnswers => prevAnswers + 1);
+        refresh();
+      }, 1000);
+    }
+  };
 
-	const onFinishQuiz = () => {
-		localStorage.removeItem('progress');
-		localStorage.removeItem('wrongAnswers');
-		localStorage.removeItem('rightAnswers');
-		setOpenResultModal(false);
-		refresh();
-	};
+  const handleOpenResultModal = () => {
+    setOpenResultModal(true);
+  };
 
-	return (
-	  <React.Fragment>
+  const onFinishQuiz = () => {
+    localStorage.removeItem('progress');
+    localStorage.removeItem('wrongAnswers');
+    localStorage.removeItem('rightAnswers');
+    setOpenResultModal(false);
+    refresh();
+  };
+
+  return (
+    <React.Fragment>
             <ResultModal
              onFinishQuiz={onFinishQuiz}
              open={openResultModal}
@@ -108,5 +108,5 @@ export default function QuizForm() {
             </Card> 
            </Container>
     	 </React.Fragment>
-	);
+  );
 }
