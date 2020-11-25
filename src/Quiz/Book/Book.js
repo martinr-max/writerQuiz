@@ -11,7 +11,6 @@ const Book = ({book, onAnswerSelected}) => {
             </ul>
         </div>
     );
-
 }
 
 export default Book;
