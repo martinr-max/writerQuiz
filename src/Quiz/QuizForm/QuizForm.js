@@ -17,7 +17,7 @@ export default function QuizForm() {
 	const initialState = {
 		writers,
 		quizData: createSelectionList(writers),
-    };
+    	};
     
 	const initialCount = Number(window.localStorage.getItem('progress') || 0);
 	const initialWrongAnswers = Number(window.localStorage.getItem('wrongAnswers') || 0);
@@ -43,7 +43,6 @@ export default function QuizForm() {
 			pathname: "/empty"
 		});
 		history.goBack();
-
 	};
 
 	const selectBookHandler = (title) => {
@@ -76,14 +75,14 @@ export default function QuizForm() {
 	};
 
 	return (
-		 <React.Fragment>
+	  <React.Fragment>
             <ResultModal
              onFinishQuiz={onFinishQuiz}
              open={openResultModal}
              rightAnswers={rightAnswers}
              wrongAnswers={wrongAnswers}
               />
-         <Container maxWidth="md" className="quiz_container" >
+           <Container maxWidth="md" className="quiz_container" >
             <div className="progressBar">
                 <ProgressBar progress={progress} /> 
             </div>
@@ -107,7 +106,7 @@ export default function QuizForm() {
                     </section>
                 </CardContent>
             </Card> 
-        </Container>
-    </React.Fragment>
+           </Container>
+    	 </React.Fragment>
 	);
 }
