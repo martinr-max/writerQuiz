@@ -5,9 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 
-
-
-
 const Turn = ({quizData, selectBookHandler, answerStatus, progress, handleOpenResultModal }) => {
 
     return(
