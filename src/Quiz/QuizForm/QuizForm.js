@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { createSelectionList, writers } from '../../Writers';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
@@ -9,7 +9,6 @@ import Turn from '../Turn/Turn';
 import { useHistory } from 'react-router';
 import './QuizForm.css';
 import ProgressBar from '../../UI/ProgressBar/ProgressBar';
-import { useEffect } from 'react';
 import ResultModal from '../../UI/ProgressBar/Modal/Modal';
 
 export default function QuizForm() {
