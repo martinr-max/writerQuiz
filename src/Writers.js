@@ -44,12 +44,10 @@ export const writers = [{
 ]
 
 export const createSelectionList = (authors) => {
-
   const randomBooksArray = reduce(authors, (allBooks, author) => {
     let oneRandomBookArray = author.books[Math.floor(Math.random() * author.books.length)];
     return allBooks.concat(oneRandomBookArray);
   }, []);
-
   let fourRandomBooks = shuffle(randomBooksArray).slice(0, 4); 
   const fourBooksList = sample(fourRandomBooks);
   return {
@@ -60,6 +58,5 @@ export const createSelectionList = (authors) => {
              return t === title;
           });
        },  
-  }
-  
+  } 
 }
